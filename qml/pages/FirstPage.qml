@@ -16,6 +16,8 @@ Page {
     property int subPages: 1
     property int pageStatus: 200
     property string currentPageImageString: ""
+    property int nextPage: 101
+    property int previousPage: 899
 
     // The effective value will be restricted by ApplicationWindow.allowedOrientations
     allowedOrientations: Orientation.Portrait
@@ -291,7 +293,7 @@ Page {
                 currentPageNumber = 100;
             }
             else {
-                ++currentPageNumber;
+                currentPageNumber = nextPage;
             }
         }
         else { // Previous page
@@ -299,7 +301,7 @@ Page {
                 currentPageNumber = 899;
             }
             else {
-                --currentPageNumber;
+                currentPageNumber = previousPage;
             }
         }
 
@@ -315,6 +317,7 @@ Page {
     }
 
     function parsePageData(json) {
+        // Parse page status.
         if (json.meta.code) {
             console.log("Code exists: " + json.meta.code);
             pageStatus = Number(json.meta.code);
@@ -324,18 +327,22 @@ Page {
             return;
         }
 
+        // Check page status.
         if (pageStatus != 200) {
             return;
         }
 
+        // Parse current page number.
         if (json.data[0].page.page) {
             currentPageNumber = Number(json.data[0].page.page);
         }
 
+        // Parse current sub page number.
         if (json.data[0].page.subpage) {
             currentSubPageNumber = Number(json.data[0].page.subpage);
         }
 
+        // Parse sub pages count.
         if (json.data[0].info.page.subpages) {
             subPages = json.data[0].info.page.subpages;
         }
@@ -345,6 +352,41 @@ Page {
 
         if (!updateSubPageCount) {
             updateSubPageCount = true;
+        }
+
+        // Parse pagination.
+        if (json.data[0].content.pagination) {
+            var tmp = json.data[0].content.pagination;
+            var indx = tmp.indexOf('href="?P=');
+            var pageNum = "";
+            if (indx >= 0)
+            {
+                tmp = tmp.substring(indx + 9);
+                pageNum = tmp.substring(0, tmp.indexOf('"'));
+                var num = Number(pageNum)
+
+                if (num !== NaN)
+                {
+                    previousPage = num;
+                }
+
+                console.log("Previous page: " + previousPage);
+            }
+
+            indx = tmp.lastIndexOf('href="?P=');
+            if (indx >= 0)
+            {
+                tmp = tmp.substring(indx + 9, indx + 12);
+//                pageNum = tmp.substring(0, tmp.indexOf('"'));
+                var num2 = Number(tmp)
+
+                if (num2 !== NaN)
+                {
+                    nextPage = num2;
+                }
+
+                console.log("Next page: " + nextPage);
+            }
         }
 
         console.log("Current page: " + currentPageNumber);
