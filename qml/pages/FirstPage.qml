@@ -2,6 +2,9 @@ import QtQuick 2.0
 import Sailfish.Silica 1.0
 import QtQuick.Layouts 1.0
 
+import "../models"
+import "../js/database.js" as DB
+
 Page {
     id: page
 
@@ -24,6 +27,12 @@ Page {
 
     Component.onCompleted: {
         pageNumberField.text = "100";
+        pageNumberField.forceActiveFocus();
+        loadFavorites();
+    }
+
+    FavoritesModel {
+        id: favModel
     }
 
     // To enable PullDownMenu, place our content in a SilicaFlickable
@@ -36,9 +45,20 @@ Page {
                 text: qsTr("Asetukset")
                 onClicked: console.log("Ping...")
             }
+            MenuItem {
+                text: qsTr("Lisää suosikki")
+                onClicked: addFavorite(currentPageNumber, currentSubPageNumber);
+            }
             MenuLabel {
                 id: currentTeletext
                 text: "YLE"
+            }
+        }
+
+        PushUpMenu {
+            MenuItem {
+                text: qsTr("Lisää suosikki")
+                onClicked: addFavorite(currentPageNumber, currentSubPageNumber);
             }
         }
 
@@ -89,39 +109,59 @@ Page {
                 }
             }
 
-            Row {
-                id: favoritesRow
+            ListView {
+                id: favoritesList
                 anchors {
                     left: parent.left
                     leftMargin: Theme.paddingSmall
                     right: parent.right
                     rightMargin: Theme.paddingSmall
                 }
-                spacing: Theme.paddingMedium
 
-                Button {
-                    id: fav1Button
-                    text: "100"
+                spacing: Theme.paddingMedium
+                height: 70
+                orientation: ListView.Horizontal
+                model: favModel
+                delegate: ListItem {
+                    contentHeight: 70
                     width: 64
+
+                    Rectangle {
+                        id: favRect
+                        color: "transparent"
+                        radius: 5
+                        anchors.fill: parent
+
+                        Label {
+                            id: favLabel
+                            anchors.centerIn: parent
+                            text: model.caption
+                        }
+                    }
+
                     onClicked: {
-                        pageNumberField.text = "100";
+                        console.log("Fav clicked: " + model.pageNumber);
+                        pageNumberField.text = model.pageNumber;
+                    }
+
+                    menu: ContextMenu {
+                        id: context
+                        MenuItem {
+                            text: "Poista suosikki"
+                            onClicked: remove();
+                        }
+                    }
+
+                    function remove() {
+                        remorseAction("Poistetaan", function() {deleteFavorite(model.itemId, index);}); //favoritesList.model.remove(index);});
                     }
                 }
-                Button {
-                    id: fav2Button
-                    text: "200"
-                    width: 64
-                    onClicked: {
-                        pageNumberField.text = "200";
-                    }
-                }
-                Button {
-                    id: fav3Button
-                    text: "320"
-                    width: 64
-                    onClicked: {
-                        pageNumberField.text = "320";
-                    }
+
+                Label {
+                    anchors.centerIn: parent
+                    text: "Ei suosikkeja"
+                    color: Theme.highlightColor
+                    visible: favoritesList.count == 0
                 }
             }
 
@@ -209,6 +249,20 @@ Page {
         }
     }
 
+    function loadFavorites() {
+        favModel.clear();
+
+        var favorites = DB.getFavorites();
+        if (favorites && favorites.length > 0) {
+            var count = favorites.length;
+            for(var i = 0; i < count; ++i) {
+                var favorite = favorites[i];
+                var fav = { "itemId": favorite.rowid, "caption": favorite.caption, "pageNumber": favorite.pageNumber, "subPageNumber": favorite.subPageNumber};
+                favModel.append(fav);
+            }
+        }
+    }
+
     function loadDone(responseText) {
         console.log("Loading done...");
         var obj = JSON.parse(responseText);
@@ -229,7 +283,6 @@ Page {
 
         // Parse image information.
         currentPageImageString = parseImage(obj);
-//        pageImage.source = parseImage(obj);
 
         loading = false;
     }
@@ -377,7 +430,6 @@ Page {
             if (indx >= 0)
             {
                 tmp = tmp.substring(indx + 9, indx + 12);
-//                pageNum = tmp.substring(0, tmp.indexOf('"'));
                 var num2 = Number(tmp)
 
                 if (num2 !== NaN)
@@ -392,5 +444,42 @@ Page {
         console.log("Current page: " + currentPageNumber);
         console.log("Current sub page: " + currentSubPageNumber);
         console.log("Sub pages: " + subPages);
+    }
+
+    function addFavorite(pageNumber, subPageNumber) {
+        console.log("Add favorite: " + pageNumber);
+
+        if (DB.doesFavoriteExist(pageNumber, subPageNumber)) {
+            console.log("Favorite exists already...");
+            return;
+        }
+
+        var favorite = {'itemId': -1, 'caption': pageNumber.toString(), 'pageNumber': pageNumber, 'subPageNumber': subPageNumber};
+        var id = DB.addFavorite(favorite);
+        if (id > 0) {
+            favorite.itemId = id;
+            var index = getIndex(pageNumber);
+            favModel.insert(index, favorite);
+        }
+    }
+
+    function getIndex(pageNumber) {
+        var count = favModel.count;
+        var index = count > 0 ? count : 0;
+        for (var i = 0; i < count; ++i) {
+            var fav = favModel.get(i);
+            if (pageNumber < fav.pageNumber) {
+                index = i;
+                break;
+            }
+        }
+        return index;
+    }
+
+    function deleteFavorite(itemId, index) {
+        console.log("Delete favorite: " + itemId);
+        if (DB.deleteFavorite(itemId)) {
+            favModel.remove(index);
+        }
     }
 }

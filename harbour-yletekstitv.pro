@@ -16,13 +16,15 @@ CONFIG += sailfishapp_qml
 
 DISTFILES += qml/harbour-yletekstitv.qml \
     qml/cover/CoverPage.qml \
+    qml/models/FavoritesModel.qml \
     qml/pages/FirstPage.qml \
     rpm/harbour-yletekstitv.changes.in \
     rpm/harbour-yletekstitv.changes.run.in \
     rpm/harbour-yletekstitv.spec \
     rpm/harbour-yletekstitv.yaml \
     translations/*.ts \
-    harbour-yletekstitv.desktop
+    harbour-yletekstitv.desktop \
+    qml/js/database.js
 
 SAILFISHAPP_ICONS = 86x86 108x108 128x128 172x172
 

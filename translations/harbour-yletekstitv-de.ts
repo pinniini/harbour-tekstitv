@@ -7,5 +7,9 @@
         <source>Asetukset</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Lisää suosikki</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 </TS>
