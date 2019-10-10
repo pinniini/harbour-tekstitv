@@ -26,9 +26,9 @@ Page {
     allowedOrientations: Orientation.Portrait
 
     Component.onCompleted: {
-        pageNumberField.text = "100";
-        pageNumberField.forceActiveFocus();
+        loadSettings();
         loadFavorites();
+        pageNumberField.focus = true;
     }
 
     FavoritesModel {
@@ -42,8 +42,8 @@ Page {
         // PullDownMenu and PushUpMenu must be declared in SilicaFlickable, SilicaListView or SilicaGridView
         PullDownMenu {
             MenuItem {
-                text: qsTr("Asetukset")
-                onClicked: console.log("Ping...")
+                text: qsTr("Tietoja")
+                onClicked: pageStack.push(Qt.resolvedUrl("AboutPage.qml"))
             }
             MenuItem {
                 text: qsTr("Lisää suosikki")
@@ -150,10 +150,18 @@ Page {
                             text: "Poista suosikki"
                             onClicked: remove();
                         }
+                        MenuItem {
+                            text: "Aseta aloitussivuksi"
+                            onClicked: setInitialPage();
+                        }
                     }
 
                     function remove() {
                         remorseAction("Poistetaan", function() {deleteFavorite(model.itemId, index);}); //favoritesList.model.remove(index);});
+                    }
+
+                    function setInitialPage() {
+                        DB.upsertSetting('InitialPage', model.caption);
                     }
                 }
 
@@ -263,6 +271,16 @@ Page {
         }
     }
 
+    function loadSettings() {
+        var initPage = DB.getSetting('InitialPage');
+        if (initPage && initPage.hasOwnProperty('value')) {
+            pageNumberField.text = initPage.value;
+        }
+        else {
+            pageNumberField.text = "100";
+        }
+    }
+
     function loadDone(responseText) {
         console.log("Loading done...");
         var obj = JSON.parse(responseText);
@@ -314,6 +332,7 @@ Page {
             }
         };
         xhr.open("GET", urli);
+        xhr.setRequestHeader('User-Agent','Teksti-TV (Sailfish OS)');
         xhr.send();
     }
 

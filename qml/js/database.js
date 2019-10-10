@@ -20,6 +20,9 @@ function initializeDatabase()
                 function(tx) {
                     // Create Favorite-table if it doesn't already exist.
                     tx.executeSql('CREATE TABLE IF NOT EXISTS Favorite(caption TEXT, pageNumber INT, subPageNumber INT)');
+
+                    // Create Setting-table.
+                    tx.executeSql('CREATE TABLE IF NOT EXISTS Setting(name TEXT, value TEXT)');
                 }
                 )
     console.log("Database initialized...")
@@ -110,4 +113,64 @@ function doesFavoriteExist(pageNumber, subPageNumber) {
     }
 
     return exists;
+}
+
+function getSettings() {
+    var db = getDatabase();
+    var items;
+
+    if(db) {
+        db.transaction(function(tx) {
+            var res = tx.executeSql('SELECT name, value FROM Setting');
+            items = res.rows;
+        });
+    }
+
+    return items;
+}
+
+function getSetting(name) {
+    var db = getDatabase();
+    var setting;
+
+    if (db) {
+        db.transaction(function(tx) {
+            var res = tx.executeSql('SELECT name, value FROM Setting WHERE name=?', [name]);
+
+            if (res.rows.length === 1) {
+                setting = res.rows[0];
+            }
+        });
+    }
+
+    return setting;
+}
+
+function upsertSetting(name, value) {
+    var db = getDatabase()
+    var id = -1
+
+    if (db) {
+        var changedCount = 0
+        db.transaction(
+            function(tx) {
+                var result = tx.executeSql('SELECT rowid AS id FROM Setting WHERE name=?', [name])
+
+                // No rows found -> insert.
+                if (result.rows.length === 0) {
+                    var res = tx.executeSql('INSERT INTO Setting (name, value) VALUES (?,?)', [name, value])
+                    id = parseInt(res.insertId)
+                }
+                // Row found -> update.
+                else {
+                    var resu = tx.executeSql('UPDATE Setting SET value=? where name=?', [value, name])
+                    if (resu.rowsAffected === 1) {
+                        id = result.rows[0].id
+                    }
+                }
+            }
+        )
+    }
+
+    return id;
 }
