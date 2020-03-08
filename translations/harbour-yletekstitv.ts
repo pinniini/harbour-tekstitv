@@ -8,10 +8,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Tämä on helppokäyttöinen teksti-tv sovellus. Tällä hetkellä sovellus osaa näyttää vain YLE:n teksti-tv:n. Muita lähteitä saatan lisätä tulevaisuudessa (mikäli tiedot on helposti saatavilla). Sovellus on avointa lähdekoodia ja koodit löytyvät github:sta.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Tietoja</source>
         <translation type="unfinished"></translation>
     </message>
@@ -43,6 +39,10 @@
         <source>Ideoita/Ongelmia/Haluatko auttaa</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Tämä on helppokäyttöinen teksti-tv sovellus. Tällä hetkellä sovellus tukee vain YLE:n teksti-tv:tä. Muita lähteitä saatan lisätä tulevaisuudessa (mikäli tiedot on helposti saatavilla). Sovellus on avointa lähdekoodia ja koodit löytyvät github:sta.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>FirstPage</name>
@@ -52,6 +52,10 @@
     </message>
     <message>
         <source>Tietoja</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Lataa uudelleen</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

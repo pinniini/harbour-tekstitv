@@ -28,7 +28,7 @@ Page {
     Component.onCompleted: {
         loadSettings();
         loadFavorites();
-        pageNumberField.focus = true;
+//        pageNumberField.focus = true;
     }
 
     FavoritesModel {
@@ -49,16 +49,16 @@ Page {
                 text: qsTr("Lisää suosikki")
                 onClicked: addFavorite(currentPageNumber, currentSubPageNumber);
             }
+            MenuItem {
+                text: qsTr("Lataa uudelleen")
+                onClicked: {
+                    console.log("Reload page " + currentPageNumber +  "/" + 1 + "...");
+                    loadPage(currentPageNumber, 1);
+                }
+            }
             MenuLabel {
                 id: currentTeletext
                 text: "YLE"
-            }
-        }
-
-        PushUpMenu {
-            MenuItem {
-                text: qsTr("Lisää suosikki")
-                onClicked: addFavorite(currentPageNumber, currentSubPageNumber);
             }
         }
 
@@ -84,11 +84,9 @@ Page {
 
                 Rectangle {
                     id: infoRectangle
-                    anchors.centerIn: parent
-                    x: Theme.paddingSmall
-                    width: infoLabel.width
-                    height: infoLabel.height
+                    anchors.fill: parent
                     color: "black"
+                    opacity: 0.9
                     visible: false
 
                     Label {
@@ -119,12 +117,13 @@ Page {
                 }
 
                 spacing: Theme.paddingMedium
-                height: 70
+//                height: 70
+                height: Theme.itemSizeExtraSmall
                 orientation: ListView.Horizontal
                 model: favModel
                 delegate: ListItem {
-                    contentHeight: 70
-                    width: 64
+                    contentHeight: Theme.itemSizeExtraSmall
+                    width: Theme.buttonWidthExtraSmall * 0.5
 
                     Rectangle {
                         id: favRect
@@ -206,7 +205,7 @@ Page {
                 TextField {
                     id: pageNumberField
                     Layout.fillWidth: true
-                    Layout.minimumWidth: 150
+                    Layout.minimumWidth: Theme.buttonWidthExtraSmall
                     Layout.alignment: Qt.AlignBottom
                     horizontalAlignment: TextInput.AlignHCenter
                     inputMethodHints: Qt.ImhDigitsOnly

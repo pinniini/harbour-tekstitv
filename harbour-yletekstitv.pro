@@ -16,6 +16,7 @@ CONFIG += sailfishapp_qml
 
 DISTFILES += qml/harbour-yletekstitv.qml \
     qml/cover/CoverPage.qml \
+    qml/js/plugin_yle.js \
     qml/models/FavoritesModel.qml \
     qml/pages/AboutPage.qml \
     qml/pages/FirstPage.qml \
