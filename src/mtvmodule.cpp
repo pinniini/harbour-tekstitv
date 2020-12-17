@@ -49,7 +49,7 @@ QString MtvModule::getPageName() const
 {
     if (_page != nullptr)
     {
-        return QString("%1 %2/%3").arg(_name).arg(QString::number(_page->page())).arg(QString::number(_page->subPage()));
+        return QString("%1 %2 %3/%4").arg(_name).arg(QString::number(_page->page())).arg(QString::number(_page->subPage())).arg(QString::number(_page->subPageCount()));
     }
     else
     {

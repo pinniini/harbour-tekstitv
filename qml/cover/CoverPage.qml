@@ -13,14 +13,14 @@ CoverBackground {
         fillMode: Image.PreserveAspectFit
     }
 
-    Label {
-        id: noSelectionLabel
-        anchors.centerIn : parent
-        text: "Ei lähdettä valittuna"
-        wrapMode: Text.WordWrap
-        width: parent.width
-        visible: !sourcesPage.currentSource
-    }
+//    Label {
+//        id: noSelectionLabel
+//        anchors.centerIn : parent
+//        text: "Ei lähdettä valittuna"
+//        wrapMode: Text.WordWrap
+//        width: parent.width
+//        visible: !sourcesPage.currentSource
+//    }
 
     Column {
         width: parent.width

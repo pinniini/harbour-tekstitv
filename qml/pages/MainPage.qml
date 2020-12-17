@@ -48,12 +48,14 @@ Page {
             console.log("Page loaded...");
             //loadingIndicator.running = false;
             if (page) {
-                console.log(page.page + " / " + page.subPage)
+//                var pageText = page.page + " / " + page.subPage;
+                var pageText = page.page + " " + page.subPage + "/" + page.subPageCount;
+                console.log(pageText)
 //                pageImage.source = currentSource.currentPage.pageImage //page.pageImage
                 pageImage.source = page.pageImage
 
                 pageNumberField.programmaticallySet = true;
-                pageNumberField.text = page.page;
+                pageNumberField.text = pageText; //page.page;
                 pageNumberField.programmaticallySet = false;
             }
         }
@@ -453,7 +455,7 @@ Page {
         if (pageNumberField.text.length == 1) {
             pageNumberField.text = "";
         }
-        else if (pageNumberField.text.length > 1) {
+        else if (pageNumberField.text.length > 1 && pageNumberField.text.length <= 3) {
             pageNumberField.text = pageNumberField.text.substring(0, pageNumberField.text.length - 1);
         }
     }
