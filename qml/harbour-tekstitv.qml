@@ -5,15 +5,13 @@ import "cover"
 
 ApplicationWindow
 {
-//    initialPage: Component { FirstPage { } }
-//    cover: Qt.resolvedUrl("cover/CoverPage.qml")
-    initialPage: firstPage
+    SourcesPage {
+        id: sourcesPage
+    }
+
+    initialPage: sourcesPage
     cover: coverPage
     allowedOrientations: Orientation.Portrait
-
-    FirstPage {
-        id: firstPage
-    }
 
     CoverPage {
         id: coverPage
