@@ -22,7 +22,7 @@ public:
     SourcePage *getCurrentPage() override;
     QString getPageName() const override;
 
-    Q_INVOKABLE void loadInitialPage();
+    Q_INVOKABLE void loadInitialPage() override;
     Q_INVOKABLE void loadPage(int pageNum, int subPageNum) override;
     Q_INVOKABLE void reloadCurrentPage() override;
     Q_INVOKABLE void navPrevSubPage() override;

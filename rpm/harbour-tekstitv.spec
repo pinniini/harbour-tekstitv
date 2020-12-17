@@ -12,8 +12,8 @@ Summary:    Teksti-TV
 Version:    1.0
 Release:    1
 Group:      Qt/Qt
-License:    LICENSE
-URL:        http://example.org/
+License:    MIT
+URL:        https://github.com/pinniini/harbour-tekstitv
 Source0:    %{name}-%{version}.tar.bz2
 Source100:  harbour-tekstitv.yaml
 Requires:   sailfishsilica-qt5 >= 0.10.9
@@ -25,7 +25,7 @@ BuildRequires:  pkgconfig(Qt5Quick)
 BuildRequires:  desktop-file-utils
 
 %description
-Short description of my Sailfish OS Application
+Finnish teletext app for Sailfish OS.
 
 
 %prep

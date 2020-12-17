@@ -16,10 +16,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Versio 1.0</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Tekijä</source>
         <translation type="unfinished"></translation>
     </message>
@@ -41,6 +37,10 @@
     </message>
     <message>
         <source>Tämä on helppokäyttöinen teksti-tv sovellus. Tällä hetkellä sovellus tukee YLE:n ja MTV:n teksti-tv:tä. Muita lähteitä saatan lisätä tulevaisuudessa (mikäli tiedot on helposti saatavilla). Sovellus on avointa lähdekoodia ja koodit löytyvät github:sta.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Versio </source>
         <translation type="unfinished"></translation>
     </message>
 </context>

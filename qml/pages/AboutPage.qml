@@ -45,7 +45,7 @@ Page {
             }
 
             Label {
-                text: qsTr("Versio 1.0")
+                text: qsTr("Versio ") + appVersion
                 x: Theme.paddingMedium
             }
 

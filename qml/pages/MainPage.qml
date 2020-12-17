@@ -16,7 +16,6 @@ Page {
     property bool initialLoad: true
 
     // This should be class implementing ISourceModule.
-//    property var currentSource: null
     property SourceModule currentSource: null
 
     onCurrentSourceChanged: {
@@ -46,12 +45,9 @@ Page {
         onPageLoaded: {
             infoRectangle.visible = false;
             console.log("Page loaded...");
-            //loadingIndicator.running = false;
             if (page) {
-//                var pageText = page.page + " / " + page.subPage;
                 var pageText = page.page + " " + page.subPage + "/" + page.subPageCount;
                 console.log(pageText)
-//                pageImage.source = currentSource.currentPage.pageImage //page.pageImage
                 pageImage.source = page.pageImage
 
                 pageNumberField.programmaticallySet = true;
@@ -87,16 +83,12 @@ Page {
 
             MenuItem {
                 text: qsTr("Lisää suosikki")
-//                onClicked: addFavorite(currentPageNumber, currentSubPageNumber);
                 onClicked: addFavorite(currentSource.currentPage.page, currentSource.currentPage.subPage);
             }
             MenuItem {
                 text: qsTr("Lataa uudelleen")
                 onClicked: {
-                    //                            console.log("Reload page " + currentPageNumber +  "/" + 1 + "...");
-                    //                            loadPage(currentPageNumber, 1);
                     console.log(currentSource)
-//                    currentSource.loadPage(100, 1);
                     currentSource.reloadCurrentPage();
                 }
             }
@@ -123,7 +115,6 @@ Page {
                 Image {
                     id: pageImage
                     anchors.fill: parent
-//                    source: currentSource ? currentSource.currentPage ? currentSource.currentPage.pageImage : "" : ""
                 }
 
                 Rectangle {
@@ -192,14 +183,9 @@ Page {
                             text: "Poista suosikki"
                             onClicked: remove();
                         }
-//                        MenuItem {
-//                            text: "Aseta aloitussivuksi"
-//                            onClicked: setInitialPage();
-//                        }
                     }
 
                     function remove() {
-//                        remorseAction("Poistetaan", function() {deleteFavorite(model.itemId, index);}); //favoritesList.model.remove(index);});
                         deleteFavorite(model.itemId, index);
                     }
                 }
@@ -247,14 +233,10 @@ Page {
                     property bool programmaticallySet: false
 
                     Layout.fillWidth: true
-                    Layout.minimumWidth: Theme.buttonWidthExtraSmall
+                    Layout.minimumWidth: Theme.buttonWidthExtraSmall * 1.5
                     Layout.alignment: Qt.AlignBottom
                     horizontalAlignment: TextInput.AlignHCenter
-                    inputMethodHints: Qt.ImhDigitsOnly
-//                    validator: IntValidator {
-//                        bottom: 100
-//                        top: 899
-//                    }
+//                    inputMethodHints: Qt.ImhDigitsOnly
 
                     onFocusChanged: {
                         if (focus) {
@@ -263,13 +245,8 @@ Page {
                     }
 
                     onTextChanged: {
-//                        text = text.replace("+", "");
-//                        text = text.replace("-", "");
-
                         // Page number.
                         if (text.length >= 3 && !programmaticallySet) {
-//                            selectAll();
-//                            loadPage(text, 1);
                             currentSource.loadPage(text, 1);
                         }
                     }
@@ -304,7 +281,6 @@ Page {
                     right: parent.right
                     rightMargin: Theme.paddingSmall
                 }
-//                height: ((mainFlick.height - (buttonRow.y + buttonRow.height) - 3 * Theme.paddingMedium) / 4)
 
                 Button {
                     text: "1"
@@ -414,13 +390,6 @@ Page {
                     Layout.alignment: Qt.AlignTop
                     onClicked: backspacePressed();
                 }
-//                Rectangle {
-//                    color: "transparent"
-//                    width: zeroButton.width
-//                    height: zeroButton.height
-//                    Layout.fillWidth: true
-//                    Layout.alignment: Qt.AlignTop
-//                }
             }
         }
     }
