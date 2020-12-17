@@ -10,23 +10,30 @@
 #   - translation filenames have to be changed
 
 # The name of your application
-TARGET = harbour-yletekstitv
+TARGET = harbour-tekstitv
 
-CONFIG += sailfishapp_qml
+CONFIG += sailfishapp
 
-DISTFILES += qml/harbour-yletekstitv.qml \
+SOURCES += src/harbour-tekstitv.cpp \
+    src/isourcemodule.cpp \
+    src/mtvmodule.cpp \
+    src/sourcemodel.cpp \
+    src/sourcepage.cpp \
+    src/ylemodule.cpp
+
+DISTFILES += qml/harbour-tekstitv.qml \
+    qml/js/database.js \
     qml/cover/CoverPage.qml \
-    qml/js/plugin_yle.js \
     qml/models/FavoritesModel.qml \
     qml/pages/AboutPage.qml \
-    qml/pages/FirstPage.qml \
-    rpm/harbour-yletekstitv.changes.in \
-    rpm/harbour-yletekstitv.changes.run.in \
-    rpm/harbour-yletekstitv.spec \
-    rpm/harbour-yletekstitv.yaml \
+    qml/pages/MainPage.qml \
+    qml/pages/SourcesPage.qml \
+    rpm/harbour-tekstitv.changes.in \
+    rpm/harbour-tekstitv.changes.run.in \
+    rpm/harbour-tekstitv.spec \
+    rpm/harbour-tekstitv.yaml \
     translations/*.ts \
-    harbour-yletekstitv.desktop \
-    qml/js/database.js
+    harbour-tekstitv.desktop
 
 SAILFISHAPP_ICONS = 86x86 108x108 128x128 172x172
 
@@ -38,4 +45,11 @@ CONFIG += sailfishapp_i18n
 # planning to localize your app, remember to comment out the
 # following TRANSLATIONS line. And also do not forget to
 # modify the localized app name in the the .desktop file.
-TRANSLATIONS += translations/harbour-yletekstitv-de.ts
+TRANSLATIONS += translations/harbour-tekstitv-de.ts
+
+HEADERS += \
+    src/isourcemodule.h \
+    src/mtvmodule.h \
+    src/sourcemodel.h \
+    src/sourcepage.h \
+    src/ylemodule.h

@@ -7,10 +7,12 @@ Page {
     orientation: Orientation.Portrait
 
     property string issuesText: qsTr("Löysitkö virheen? Onko sinulla hyviä kehitysideoita? Raportoi ne github:iin ja minä katson ne mielelläni läpi :)")
-    property string generalAboutText: qsTr("Tämä on helppokäyttöinen teksti-tv sovellus. Tällä hetkellä sovellus tukee vain YLE:n teksti-tv:tä. Muita lähteitä saatan lisätä tulevaisuudessa (mikäli tiedot on helposti saatavilla). Sovellus on avointa lähdekoodia ja koodit löytyvät github:sta.")
+    property string generalAboutText: qsTr("Tämä on helppokäyttöinen teksti-tv sovellus. Tällä hetkellä sovellus tukee YLE:n ja MTV:n teksti-tv:tä. Muita lähteitä saatan lisätä tulevaisuudessa (mikäli tiedot on helposti saatavilla). Sovellus on avointa lähdekoodia ja koodit löytyvät github:sta.")
 
     Component.onCompleted: {
         issueLabel.text = Theme.highlightText(issuesText, "github", Theme.highlightColor)
+
+        console.log(pageStack)
     }
 
     SilicaFlickable {
@@ -43,7 +45,7 @@ Page {
             }
 
             Label {
-                text: qsTr("Versio 1.0")
+                text: qsTr("Versio ") + appVersion
                 x: Theme.paddingMedium
             }
 
@@ -52,7 +54,7 @@ Page {
             }
 
             Label {
-                text: qsTr("Joni Korhonen, tunnetaan myös nimellä pinniini")
+                text: qsTr("pinniini (Joni Korhonen)")
                 x: Theme.paddingMedium
                 wrapMode: Text.Wrap
                 width: parent.width - Theme.paddingMedium
