@@ -28,7 +28,9 @@ Page {
         coverPage.coverConnections.target = null;
         coverPage.coverConnections.target = currentSource;
     }
+
     property Page currentTeletextPage: null
+    property int currentDefaultIndex: -1
 
     SourceModel {
         id: sourceModel
@@ -55,11 +57,24 @@ Page {
             contentHeight: Theme.itemSizeSmall
             width: parent.width
 
+            Image {
+                id: defaultIndicator
+                source: index == currentDefaultIndex ? "image://theme/icon-m-favorite-selected" : ""
+                height: sourceNameLabel.height
+                width: height
+                y: (parent.height / 2) - (height / 2)
+            }
+
             Label {
+                id: sourceNameLabel
                 text: model.name
                 y: (parent.height / 2) - (height / 2)
                 x: Theme.paddingMedium
-                width: parent.width - Theme.paddingMedium - Theme.paddingMedium
+
+                anchors.left: defaultIndicator.right
+                anchors.right: parent.right
+                anchors.rightMargin: Theme.paddingMedium
+                //width: parent.width - Theme.paddingMedium - Theme.paddingMedium
             }
 
             onClicked: {
@@ -148,12 +163,14 @@ Page {
         console.log("Setting source as default:", selected.code);
 
         if (selected) {
+            currentDefaultIndex = index;
             DB.upsertSetting('InitialSource', selected.code, "default");
         }
     }
 
     function deleteDefaultSource() {
         DB.deleteInitialSource();
+        currentDefaultIndex = -1;
     }
 
     function isDefaultSource(index) {
@@ -182,6 +199,7 @@ Page {
 
         // Found source.
         if (index > -1) {
+            currentDefaultIndex = index;
             selectSource(i);
         }
     }
