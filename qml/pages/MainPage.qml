@@ -24,6 +24,8 @@ Page {
         console.log("Current source changed...");
         conn.target = null;
         conn.target = currentSource;
+        updateJob.enabled = false;
+        mainPage.autoUpdateEnabled = false;
 
         if (!initialLoad) {
             console.log("Source changed and not initial load -> load initial page and load favorites...");
