@@ -28,7 +28,7 @@ DISTFILES += qml/harbour-tekstitv.qml \
     qml/pages/AboutPage.qml \
     qml/pages/MainPage.qml \
     qml/pages/SourcesPage.qml \
-    rpm/harbour-tekstitv.changes.in \
+    rpm/harbour-tekstitv.changes \
     rpm/harbour-tekstitv.changes.run.in \
     rpm/harbour-tekstitv.spec \
     rpm/harbour-tekstitv.yaml \

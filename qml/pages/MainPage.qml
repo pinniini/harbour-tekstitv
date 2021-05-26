@@ -1,6 +1,7 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
 import QtQuick.Layouts 1.0
+import Nemo.KeepAlive 1.2
 
 import fi.pinniini.tekstitv 1.0
 
@@ -14,6 +15,7 @@ Page {
     allowedOrientations: Orientation.All
 
     property bool initialLoad: true
+    property bool autoUpdateEnabled: false
 
     // This should be class implementing ISourceModule.
     property SourceModule currentSource: null
@@ -22,6 +24,8 @@ Page {
         console.log("Current source changed...");
         conn.target = null;
         conn.target = currentSource;
+        updateJob.enabled = false;
+        mainPage.autoUpdateEnabled = false;
 
         if (!initialLoad) {
             console.log("Source changed and not initial load -> load initial page and load favorites...");
@@ -80,7 +84,22 @@ Page {
                 text: qsTr("Aseta lähteen aloitussivuksi")
                 onClicked: setInitialPage();
             }
-
+            MenuItem {
+                text: mainPage.autoUpdateEnabled ? qsTr("Pysäytä automaattinen päivitys") : qsTr("Päivitä automaattisesti")
+                onClicked: {
+                    // Disable
+                    if (mainPage.autoUpdateEnabled) {
+                        console.log("Page auto-update disabled...");
+                        updateJob.enabled = false;
+                        mainPage.autoUpdateEnabled = false;
+                    } else {
+                        // Enable auto-update
+                        console.log("Page auto-update enabled...");
+                        updateJob.enabled = true;
+                        mainPage.autoUpdateEnabled = true;
+                    }
+                }
+            }
             MenuItem {
                 text: qsTr("Lisää suosikki")
                 onClicked: addFavorite(currentSource.currentPage.page, currentSource.currentPage.subPage);
@@ -392,6 +411,22 @@ Page {
                 }
             }
         }
+    }
+
+    BackgroundJob {
+        id: updateJob
+        enabled: false
+        frequency: BackgroundJob.TwoAndHalfMinutes
+
+        onTriggered: {
+            console.log("Reload page at:", printDateTime(new Date()));
+            currentSource.reloadCurrentPage();
+            finished();
+        }
+    }
+
+    function printDateTime(dateTime) {
+        return new Date(dateTime).toLocaleString('fi-FI', { timeZone: 'EET' });
     }
 
     function navigatePage(forwards) {

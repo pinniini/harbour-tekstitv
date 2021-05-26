@@ -62,6 +62,14 @@
         <source>Aseta lähteen aloitussivuksi</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Pysäytä automaattinen päivitys</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Päivitä automaattisesti</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>SourcesPage</name>
