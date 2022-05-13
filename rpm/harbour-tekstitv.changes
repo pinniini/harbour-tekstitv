@@ -12,6 +12,10 @@
 # * date Author's Name <author's email> version-release
 # - Summary of changes
 
+* Wed May 12 2022 Joni Korhonen (pinniini) 1.2-1
+- v1.2
+- Comply with Sailjail
+
 * Wed May 26 2021 Joni Korhonen 1.1-1
 - v1.1
 - Indicator for chosen default source
