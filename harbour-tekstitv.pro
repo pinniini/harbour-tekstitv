@@ -16,6 +16,7 @@ CONFIG += sailfishapp
 
 SOURCES += src/harbour-tekstitv.cpp \
     src/isourcemodule.cpp \
+    src/migrator.cpp \
     src/mtvmodule.cpp \
     src/sourcemodel.cpp \
     src/sourcepage.cpp \
@@ -49,6 +50,7 @@ TRANSLATIONS += translations/harbour-tekstitv-de.ts
 
 HEADERS += \
     src/isourcemodule.h \
+    src/migrator.h \
     src/mtvmodule.h \
     src/sourcemodel.h \
     src/sourcepage.h \

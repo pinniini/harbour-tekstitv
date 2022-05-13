@@ -10,3 +10,8 @@ Name=Teksti-TV
 # Remember to comment out the following line, if you do not want to use
 # a different app name in German locale (de).
 #Name[de]=harbour-tekstitv
+
+[X-Sailjail]
+OrganizationName=fi.pinniini
+ApplicationName=TekstiTV
+Permissions=Internet;
