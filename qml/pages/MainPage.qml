@@ -12,13 +12,15 @@ Page {
     id: mainPage
 
     // The effective value will be restricted by ApplicationWindow.allowedOrientations
-    allowedOrientations: Orientation.All
+    allowedOrientations: Orientation.Portrait
+    clip: true
 
     property bool initialLoad: true
     property bool autoUpdateEnabled: false
 
     // This should be class implementing ISourceModule.
     property SourceModule currentSource: null
+    property SourceModel sourceModel
 
     onCurrentSourceChanged: {
         console.log("Current source changed...");
@@ -81,6 +83,13 @@ Page {
                 onClicked: pageStack.push(Qt.resolvedUrl("AboutPage.qml"))
             }
             MenuItem {
+                text: qsTr("Asetukset")
+                onClicked: {
+                    pageStack.push(Qt.resolvedUrl("SettingsPage.qml"), {"sourceModel": sourceModel})
+                }
+            }
+
+            MenuItem {
                 text: qsTr("Aseta lähteen aloitussivuksi")
                 onClicked: setInitialPage();
             }
@@ -134,6 +143,11 @@ Page {
                 Image {
                     id: pageImage
                     anchors.fill: parent
+
+                    MouseArea {
+                        anchors.fill: parent
+                        onClicked: pageStack.push(Qt.resolvedUrl("PageViewer.qml"), {'pageSource' : pageImage.source})
+                    }
                 }
 
                 Rectangle {

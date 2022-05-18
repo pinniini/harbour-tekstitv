@@ -13,7 +13,8 @@ class SourceModel : public QAbstractListModel
 public:
     enum SourceRoles
     {
-        NameRole = Qt::UserRole + 1
+        NameRole = Qt::UserRole + 1,
+        CodeRole = Qt::UserRole + 2
     };
 
     explicit SourceModel(QObject *parent = 0);

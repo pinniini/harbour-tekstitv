@@ -4,7 +4,7 @@ import Sailfish.Silica 1.0
 Page {
     id: aboutPage
 
-    orientation: Orientation.Portrait
+    allowedOrientations: Orientation.All
 
     property string issuesText: qsTr("Löysitkö virheen? Onko sinulla hyviä kehitysideoita? Raportoi ne github:iin ja minä katson ne mielelläni läpi :)")
     property string generalAboutText: qsTr("Tämä on helppokäyttöinen teksti-tv sovellus. Tällä hetkellä sovellus tukee YLE:n ja MTV:n teksti-tv:tä. Muita lähteitä saatan lisätä tulevaisuudessa (mikäli tiedot on helposti saatavilla). Sovellus on avointa lähdekoodia ja koodit löytyvät github:sta.")

@@ -63,6 +63,8 @@ QVariant SourceModel::data(const QModelIndex &index, int role) const
         switch (role) {
         case NameRole:
             return QVariant(_sources->at(index.row())->getName());
+        case CodeRole:
+            return QVariant(_sources->at(index.row())->getCode());
         default:
             return QVariant();
         }
@@ -77,6 +79,7 @@ QHash<int, QByteArray> SourceModel::roleNames() const
 {
     QHash<int, QByteArray> roles;
     roles[NameRole] = "name";
+    roles[CodeRole] = "code";
     return roles;
 }
 

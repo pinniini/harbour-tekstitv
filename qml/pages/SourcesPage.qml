@@ -13,12 +13,20 @@ Page {
 
     property bool initialLoad: true
     onStatusChanged: {
+        var initialSource = DB.getSetting("InitialSource", "default");
         if (initialLoad && status === PageStatus.Active) {
-            var initialSource = DB.getSetting("InitialSource", "default");
             if (initialSource !== null) {
                 findAndSelectSource(initialSource.value);
             }
             initialLoad = false;
+        } else if (status === PageStatus.Activating && !initialLoad) {
+            console.log("Activating sources page...")
+            if (initialSource !== null) {
+                currentDefaultSourceCode = initialSource.value
+            } else {
+                currentDefaultIndex = -1
+                currentDefaultSourceCode = ''
+            }
         }
     }
 
@@ -31,6 +39,7 @@ Page {
 
     property Page currentTeletextPage: null
     property int currentDefaultIndex: -1
+    property string currentDefaultSourceCode: ''
 
     SourceModel {
         id: sourceModel
@@ -59,7 +68,8 @@ Page {
 
             Image {
                 id: defaultIndicator
-                source: index == currentDefaultIndex ? "image://theme/icon-m-favorite-selected" : ""
+//                source: index == currentDefaultIndex ? "image://theme/icon-m-favorite-selected" : ""
+                source: model.code === currentDefaultSourceCode ? "image://theme/icon-m-favorite-selected" : ""
                 height: sourceNameLabel.height
                 width: height
                 y: (parent.height / 2) - (height / 2)
@@ -109,7 +119,7 @@ Page {
             console.log("No teletext page yet, let's add it...");
             console.log(pageStack);
             console.log(selected);
-            currentTeletextPage = pageStack.pushAttached(Qt.resolvedUrl("MainPage.qml"), {"currentSource": selected});
+            currentTeletextPage = pageStack.pushAttached(Qt.resolvedUrl("MainPage.qml"), {"currentSource": selected, "sourceModel": sourceModel});
             currentSource = selected;
             pageStack.navigateForward(PageStackAction.Animated);
         }
@@ -164,6 +174,7 @@ Page {
 
         if (selected) {
             currentDefaultIndex = index;
+            currentDefaultSourceCode = selected.code
             DB.upsertSetting('InitialSource', selected.code, "default");
         }
     }
@@ -171,6 +182,7 @@ Page {
     function deleteDefaultSource() {
         DB.deleteInitialSource();
         currentDefaultIndex = -1;
+        currentDefaultSourceCode = ''
     }
 
     function isDefaultSource(index) {
@@ -200,6 +212,7 @@ Page {
         // Found source.
         if (index > -1) {
             currentDefaultIndex = index;
+            currentDefaultSourceCode = code
             selectSource(i);
         }
     }
