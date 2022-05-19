@@ -11,7 +11,7 @@ ApplicationWindow
 
     initialPage: sourcesPage
     cover: coverPage
-    allowedOrientations: Orientation.Portrait
+    allowedOrientations: Orientation.All //Orientation.Portrait
 
     CoverPage {
         id: coverPage

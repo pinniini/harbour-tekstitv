@@ -9,7 +9,7 @@ Name:       harbour-tekstitv
 # << macros
 
 Summary:    Teksti-TV
-Version:    1.2
+Version:    1.3
 Release:    1
 Group:      Qt/Qt
 License:    MIT

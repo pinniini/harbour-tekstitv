@@ -70,6 +70,45 @@
         <source>Päivitä automaattisesti</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Asetukset</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>SettingsPage</name>
+    <message>
+        <source>Asetukset</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Lähde</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Oletuslähde</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ei mikään</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Lähde, jonka aloitussivu ladataan automaattisesti kun sovellus avataan.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Sivunkatselin</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Oletustarkennus</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Oletustarkennuksen taso, jolla sivu näytetään oletuksena. Sivua voi myös tarkentaa nipistys-eleellä. Sivunkatselin avataan napauttamalla teksti-tv:n sivun kuvaa.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>SourcesPage</name>

@@ -28,6 +28,8 @@ DISTFILES += qml/harbour-tekstitv.qml \
     qml/models/FavoritesModel.qml \
     qml/pages/AboutPage.qml \
     qml/pages/MainPage.qml \
+    qml/pages/PageViewer.qml \
+    qml/pages/SettingsPage.qml \
     qml/pages/SourcesPage.qml \
     rpm/harbour-tekstitv.changes \
     rpm/harbour-tekstitv.changes.run.in \
