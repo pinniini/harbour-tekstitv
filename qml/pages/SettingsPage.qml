@@ -97,12 +97,21 @@ Page {
                 maximumValue: 5
                 value: zoomLevel
                 stepSize: 0.5
-                valueText: value + " kertainen"
+                valueText: value + " x tarkennus"
                 label: qsTr("Oletustarkennus")
 
                 onReleased: {
                     DB.upsertSetting("DefaultZoomLevel", value, "default")
                 }
+            }
+
+            Label {
+                id: zoomDescription
+                width: parent.width - Theme.horizontalPageMargin
+                wrapMode: Text.WordWrap
+                anchors.horizontalCenter: parent.horizontalCenter
+                text: qsTr("Oletustarkennuksen taso, jolla sivu näytetään oletuksena. Sivua voi myös tarkentaa nipistys-eleellä. Sivunkatselin avataan napauttamalla teksti-tv:n sivun kuvaa.")
+                color: Theme.secondaryColor
             }
         }
     }

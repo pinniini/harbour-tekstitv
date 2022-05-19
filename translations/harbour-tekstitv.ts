@@ -90,7 +90,15 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Sivunkatselija</source>
+        <source>Ei mikään</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Lähde, jonka aloitussivu ladataan automaattisesti kun sovellus avataan.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Sivunkatselin</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -98,11 +106,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Ei mikään</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Lähde, jonka aloitussivu ladataan automaattisesti kun sovellus avataan.</source>
+        <source>Oletustarkennuksen taso, jolla sivu näytetään oletuksena. Sivua voi myös tarkentaa nipistys-eleellä. Sivunkatselin avataan napauttamalla teksti-tv:n sivun kuvaa.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
