@@ -14,7 +14,8 @@ MtvModule::MtvModule()
     _pageNum = 100;
     _subPage = 1;
     _baseUrl = "https://www.mtvtekstikanava.fi/new2008/{pagenum}-{subpagenum}.htm";
-    _baseImageUrl = "https://www.mtvtekstikanava.fi/new2008/big/images/{pagenum}-{subpagenum}.gif";
+//    _baseImageUrl = "https://www.mtvtekstikanava.fi/new2008/big/images/{pagenum}-{subpagenum}.gif";
+    _baseImageUrl = "https://www.mtvtekstikanava.fi/new2008/images/{pagenum}-{subpagenum}.gif";
     _manager = new QNetworkAccessManager(this);
 
     _testDateTime = QDateTime::currentDateTime();
