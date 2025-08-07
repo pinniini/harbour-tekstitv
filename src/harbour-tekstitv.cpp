@@ -31,7 +31,7 @@ int main(int argc, char *argv[])
     qmlRegisterType<SourceModel>("fi.pinniini.tekstitv", 1, 0, "SourceModel");
     qmlRegisterType<SourcePage>("fi.pinniini.tekstitv", 1, 0, "SourcePage");
 
-    view->rootContext()->setContextProperty("appVersion", "1.3.1");
+    view->rootContext()->setContextProperty("appVersion", "1.3.2");
     view->setSource(SailfishApp::pathToMainQml());
     view->show();
     return a->exec();

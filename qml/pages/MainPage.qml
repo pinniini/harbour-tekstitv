@@ -131,7 +131,8 @@ Page {
 
         Column {
             id: column
-            y: Theme.paddingMedium
+            anchors.top: parent.top
+            anchors.topMargin: Screen.topCutout.height
             width: parent.width
             spacing: Theme.paddingMedium
 
