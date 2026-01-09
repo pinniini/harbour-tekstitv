@@ -1,5 +1,5 @@
-#ifndef MTVMODULE_H
-#define MTVMODULE_H
+#ifndef SVTMODULE_H
+#define SVTMODULE_H
 
 #include <QNetworkAccessManager>
 #include <QNetworkReply>
@@ -7,12 +7,12 @@
 #include "isourcemodule.h"
 #include "sourcepage.h"
 
-class MtvModule : public ISourceModule
+class SvtModule : public ISourceModule
 {
     Q_OBJECT
 public:
-    MtvModule();
-    ~MtvModule();
+    SvtModule();
+    ~SvtModule();
 
     // ISourceModule interface
     QString getCode() const override;
@@ -46,15 +46,6 @@ private:
     QNetworkAccessManager* _manager;
     QNetworkReply* _reply;
 
-    QDateTime _testDateTime;
-
-    // Page number parsing stuff.
-    const QString _previousPageTemplate = "<li class=\"previous-page\"><a href=\"";
-    const QString _previousSubPageTemplate = "<li class=\"previous-subpage\"><a href=\"";
-    const QString _pageInfoTemplate = "<li class=\"page\"><strong><center>";
-    const QString _nextSubPageTemplate = "<li class=\"next-subpage\"><a href=\"";
-    const QString _nextPageTemplate = "<li class=\"next-page\"><a href=\"";
-
     QUrl generateUrl(const QString& base);
     void cleanRequest();
     void setLoadingStatus(bool status);
@@ -64,4 +55,4 @@ private:
     void parseNextPages(QString &document, int &nextPage, int &nextSubPage);
 };
 
-#endif // MTVMODULE_H
+#endif // SVTMODULE_H

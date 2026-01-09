@@ -20,6 +20,7 @@ SOURCES += src/harbour-tekstitv.cpp \
     src/mtvmodule.cpp \
     src/sourcemodel.cpp \
     src/sourcepage.cpp \
+    src/svtmodule.cpp \
     src/ylemodule.cpp
 
 DISTFILES += qml/harbour-tekstitv.qml \
@@ -56,4 +57,5 @@ HEADERS += \
     src/mtvmodule.h \
     src/sourcemodel.h \
     src/sourcepage.h \
+    src/svtmodule.h \
     src/ylemodule.h

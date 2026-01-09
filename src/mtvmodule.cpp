@@ -58,6 +58,11 @@ QString MtvModule::getPageName() const
     }
 }
 
+bool MtvModule::supportsSubPages() const
+{
+    return true;
+}
+
 void MtvModule::loadInitialPage()
 {
     loadPage(100, 1);

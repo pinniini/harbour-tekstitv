@@ -21,6 +21,7 @@ public:
     bool isLoading() const override;
     SourcePage *getCurrentPage() override;
     QString getPageName() const override;
+    bool supportsSubPages() const override;
 
     Q_INVOKABLE void loadInitialPage() override;
     Q_INVOKABLE void loadPage(int pageNum, int subPageNum) override;

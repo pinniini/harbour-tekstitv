@@ -38,6 +38,11 @@ QString ISourceModule::getPageName() const
     return _name;
 }
 
+bool ISourceModule::supportsSubPages() const
+{
+    return true;
+}
+
 void ISourceModule::loadInitialPage()
 {
     _isLoading = true;

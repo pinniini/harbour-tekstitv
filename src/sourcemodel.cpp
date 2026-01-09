@@ -3,6 +3,7 @@
 #include "sourcemodel.h"
 #include "ylemodule.h"
 #include "mtvmodule.h"
+#include "svtmodule.h"
 
 SourceModel::SourceModel(QObject *parent) : QAbstractListModel(parent)
 {
@@ -21,6 +22,13 @@ SourceModel::SourceModel(QObject *parent) : QAbstractListModel(parent)
     // Because the ownership moves to the js engine if we return the object from here to there.
     QQmlEngine::setObjectOwnership(mtv, QQmlEngine::CppOwnership);
     _sources->append(mtv);
+
+    // Add SVT module.
+    SvtModule *svt = new SvtModule();
+    // This is necessary, so that the js engine won't garbage collect the object after using get-method.
+    // Because the ownership moves to the js engine if we return the object from here to there.
+    QQmlEngine::setObjectOwnership(svt, QQmlEngine::CppOwnership);
+    _sources->append(svt);
 }
 
 SourceModel::~SourceModel()

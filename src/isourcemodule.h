@@ -18,12 +18,14 @@ public:
     Q_PROPERTY(bool loading READ isLoading NOTIFY loadingChanged)
     Q_PROPERTY(SourcePage* currentPage READ getCurrentPage)
     Q_PROPERTY(QString pageName READ getPageName)
+    Q_PROPERTY(bool supportsSubPages READ supportsSubPages)
 
     virtual QString getCode() const;
     virtual QString getName() const;
     virtual bool isLoading() const;
     virtual SourcePage* getCurrentPage();
     virtual QString getPageName() const;
+    virtual bool supportsSubPages() const;
 
     Q_INVOKABLE virtual void loadInitialPage();
     Q_INVOKABLE virtual void loadPage(int pageNum, int subPageNum = 1);

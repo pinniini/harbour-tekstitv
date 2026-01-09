@@ -58,6 +58,11 @@ QString YleModule::getPageName() const
     }
 }
 
+bool YleModule::supportsSubPages() const
+{
+    return true;
+}
+
 void YleModule::loadInitialPage()
 {
     loadPage(100, 1);
