@@ -25,7 +25,7 @@ BuildRequires:  pkgconfig(Qt5Quick)
 BuildRequires:  desktop-file-utils
 
 %description
-Finnish teletext app for Sailfish OS.
+Teletext app for Sailfish OS.
 
 
 %prep

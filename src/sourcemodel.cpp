@@ -3,6 +3,7 @@
 #include "sourcemodel.h"
 #include "ylemodule.h"
 #include "mtvmodule.h"
+#include "televideomodule.h"
 
 SourceModel::SourceModel(QObject *parent) : QAbstractListModel(parent)
 {
@@ -21,6 +22,46 @@ SourceModel::SourceModel(QObject *parent) : QAbstractListModel(parent)
     // Because the ownership moves to the js engine if we return the object from here to there.
     QQmlEngine::setObjectOwnership(mtv, QQmlEngine::CppOwnership);
     _sources->append(mtv);
+
+    // Add Televideo module.
+    TelevideoModule *televideo = new TelevideoModule();
+    // This is necessary, so that the js engine won't garbage collect the object after using get-method.
+    // Because the ownership moves to the js engine if we return the object from here to there.
+    QQmlEngine::setObjectOwnership(televideo, QQmlEngine::CppOwnership);
+    _sources->append(televideo);
+
+    // Add Regional Televideo modules.
+    QList<QString> regions = {
+        "Abruzzo",
+        "Altoadige",
+        "Basilicata",
+        "Calabria",
+        "Campania",
+        "Emilia",
+        "Friuli",
+        "Lazio",
+        "Liguria",
+        "Lombardia",
+        "Marche",
+        "Molise",
+        "Piemonte",
+        "Puglia",
+        "Sardegna",
+        "Sicilia",
+        "Toscana",
+        "Trentino",
+        "Umbria",
+        "Aosta",
+        "Veneto",
+    };
+    foreach (QString region, regions)
+    {
+        TelevideoModule *regionalTelevideo = new TelevideoModule(region);
+        // This is necessary, so that the js engine won't garbage collect the object after using get-method.
+        // Because the ownership moves to the js engine if we return the object from here to there.
+        QQmlEngine::setObjectOwnership(regionalTelevideo, QQmlEngine::CppOwnership);
+        _sources->append(regionalTelevideo);
+    }
 }
 
 SourceModel::~SourceModel()
