@@ -3,6 +3,7 @@
 
 #include <QNetworkAccessManager>
 #include <QNetworkReply>
+#include <QPointer>
 
 #include "isourcemodule.h"
 #include "sourcepage.h"
@@ -45,14 +46,14 @@ private:
     QString _baseImageUrl;
     QNetworkAccessManager* _manager;
     QNetworkReply* _reply;
+//    QList<SourcePage *> _subPages;
+    QList<QPointer<SourcePage>> _subPages;
 
     QUrl generateUrl(const QString& base);
     void cleanRequest();
     void setLoadingStatus(bool status);
 
     bool parsePageText(QString &document);
-    void parsePreviousPages(QString &document, int &previousPage, int &previousSubPage);
-    void parseNextPages(QString &document, int &nextPage, int &nextSubPage);
 };
 
 #endif // SVTMODULE_H

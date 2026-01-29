@@ -16,7 +16,6 @@ SvtModule::SvtModule()
     _pageNum = 100;
     _subPage = 1;
     _baseUrl = "https://www.svt.se/text-tv/api/{pagenum}";
-//    _baseImageUrl = "https://www.mtvtekstikanava.fi/new2008/big/images/{pagenum}-{subpagenum}.gif";
     _baseImageUrl = "data:image/gif;base64,{imagedata}";
     _manager = new QNetworkAccessManager(this);
 }
@@ -94,7 +93,14 @@ void SvtModule::reloadCurrentPage()
 
 void SvtModule::navPrevSubPage()
 {
-    return;
+    --_subPage;
+
+    if (_subPage < 1)
+    {
+        _subPage = _page->subPageCount();
+    }
+
+    emit pageLoaded(_subPages.at(_subPage - 1));
 }
 
 void SvtModule::navPrevPage()
@@ -119,7 +125,14 @@ void SvtModule::navNextPage()
 
 void SvtModule::navNextSubPage()
 {
-    return;
+    ++_subPage;
+
+    if (_subPage > _page->subPageCount())
+    {
+        _subPage = 1;
+    }
+
+    emit pageLoaded(_subPages.at(_subPage - 1));
 }
 
 void SvtModule::pageLoadingFinished()
@@ -134,10 +147,16 @@ void SvtModule::pageLoadingFinished()
     }
 
     QString pageData = QString::fromLatin1(_reply->readAll());
-    parsePageText(pageData);
-
-    setLoadingStatus(false);
-    emit pageLoaded(_page);
+    if (parsePageText(pageData))
+    {
+        setLoadingStatus(false);
+        emit pageLoaded(_page);
+    }
+    else
+    {
+        setLoadingStatus(false);
+        emit pageMissing();
+    }
 }
 
 QUrl SvtModule::generateUrl(const QString &base)
@@ -169,8 +188,6 @@ bool SvtModule::parsePageText(QString &document)
     int nextPage = 0;
     QString image = _baseImageUrl;
 
-//    qDebug() << "parsePageText: document: " << document;
-
     QJsonParseError *error = new QJsonParseError();
     QJsonDocument docu(QJsonDocument::fromJson(document.toLatin1(), error));
     if (!docu.isEmpty() && docu.isObject() && docu.object().contains("data"))
@@ -199,19 +216,31 @@ bool SvtModule::parsePageText(QString &document)
 
         qDebug() << "Page numbers, prev - next: " << prevPage << " - " << nextPage;
 
-//        QJsonObject dataObj = docuObj.value("data").toObject();
+        // Page missing
+        if (docu.object().contains("status") && docu.object().value("status").toString() == "fail")
+        {
+            return false;
+        }
+
         if (docuObj.contains("subPages"))
         {
-//            qDebug() << "subPages: " << dataObj.value("subPages");
+            _subPages.clear();
 
             QJsonArray pageArray = docuObj.value("subPages").toArray();
             subPageCount = pageArray.count();
-            if (subPageCount > 0)
+
+            for (int i = 0; i < subPageCount; ++i)
             {
-                QJsonObject pageObj = pageArray.at(0).toObject();
+                QJsonObject pageObj = pageArray.at(i).toObject();
                 if (pageObj.contains("gifAsBase64"))
                 {
-                    image.replace("{imagedata}", pageObj.value("gifAsBase64").toString());
+                    QString img = _baseImageUrl;
+                    img.replace("{imagedata}", pageObj.value("gifAsBase64").toString());
+                    auto subi = new SourcePage(200, _pageNum, i + 1, subPageCount, prevPage, nextPage, img, this);
+                    // This is necessary, so that the js engine won't garbage collect the object after using get-method.
+                    // Because the ownership moves to the js engine if we return the object from here to there.
+                    QQmlEngine::setObjectOwnership(subi, QQmlEngine::CppOwnership);
+                    _subPages.append(subi);
                 }
             }
         }
@@ -233,20 +262,10 @@ bool SvtModule::parsePageText(QString &document)
         _page = nullptr;
     }
 
-    _page = new SourcePage(200, _pageNum, _subPage, subPageCount, prevPage, nextPage, image, this);
+    _page = _subPages.first();
     // This is necessary, so that the js engine won't garbage collect the object after using get-method.
     // Because the ownership moves to the js engine if we return the object from here to there.
     QQmlEngine::setObjectOwnership(_page, QQmlEngine::CppOwnership);
 
     return true;
-}
-
-void SvtModule::parsePreviousPages(QString &document, int &previousPage, int &previousSubPage)
-{
-
-}
-
-void SvtModule::parseNextPages(QString &document, int &nextPage, int &nextSubPage)
-{
-
 }
