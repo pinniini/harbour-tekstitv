@@ -132,7 +132,7 @@ Page {
         Column {
             id: column
             anchors.top: parent.top
-            anchors.topMargin: Screen.topCutout.height
+            anchors.topMargin: Screen.topCutout.height + Theme.paddingSmall
             width: parent.width
             spacing: Theme.paddingMedium
 

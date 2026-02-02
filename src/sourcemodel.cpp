@@ -17,11 +17,11 @@ SourceModel::SourceModel(QObject *parent) : QAbstractListModel(parent)
     _sources->append(yle);
 
     // Add MTV module.
-    MtvModule *mtv = new MtvModule();
-    // This is necessary, so that the js engine won't garbage collect the object after using get-method.
-    // Because the ownership moves to the js engine if we return the object from here to there.
-    QQmlEngine::setObjectOwnership(mtv, QQmlEngine::CppOwnership);
-    _sources->append(mtv);
+//    MtvModule *mtv = new MtvModule();
+//    // This is necessary, so that the js engine won't garbage collect the object after using get-method.
+//    // Because the ownership moves to the js engine if we return the object from here to there.
+//    QQmlEngine::setObjectOwnership(mtv, QQmlEngine::CppOwnership);
+//    _sources->append(mtv);
 
     // Add Televideo module.
     TelevideoModule *televideo = new TelevideoModule();
