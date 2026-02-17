@@ -36,12 +36,20 @@
         <translation>pinniini (Joni Korhonen)</translation>
     </message>
     <message>
-        <source>Tämä on helppokäyttöinen teksti-tv sovellus. Tällä hetkellä sovellus tukee YLE:n ja MTV:n teksti-tv:tä. Muita lähteitä saatan lisätä tulevaisuudessa (mikäli tiedot on helposti saatavilla). Sovellus on avointa lähdekoodia ja koodit löytyvät github:sta.</source>
-        <translation>This is an easy to use teletext app. Currently, the app supports YLE and MTV teletext. Other sources may be added in the future (if the information is easily available). The application is open source and the source code can be found on GitHub.</translation>
-    </message>
-    <message>
         <source>Versio </source>
         <translation>Version </translation>
+    </message>
+    <message>
+        <source>Tämä on helppokäyttöinen teksti-tv sovellus. Tällä hetkellä sovellus tukee YLE:n ja Italian Televideo teksti-tv:tä. Muita lähteitä saatan lisätä tulevaisuudessa (mikäli tiedot on helposti saatavilla). Sovellus on avointa lähdekoodia ja koodit löytyvät github:sta.</source>
+        <translation>This is an easy to use teletext app. Currently, the app supports Finnish YLE and Italian Televideo teletexts. Other sources may be added in the future (if the information is easily available). The application is open source and the source code can be found on GitHub.</translation>
+    </message>
+    <message>
+        <source>Kiitokset</source>
+        <translation>Credits</translation>
+    </message>
+    <message>
+        <source>Italiankieliset käännökset: Francesco Gazzetta (fgaz)</source>
+        <translation>Italian translation by: Francesco Gazzetta (fgaz)</translation>
     </message>
 </context>
 <context>
@@ -60,7 +68,7 @@
     </message>
     <message>
         <source>Aseta lähteen aloitussivuksi</source>
-        <translation>Set this source as default</translation>
+        <translation>Set this page as source&apos;s default</translation>
     </message>
     <message>
         <source>Pysäytä automaattinen päivitys</source>
@@ -73,6 +81,22 @@
     <message>
         <source>Asetukset</source>
         <translation>Settings</translation>
+    </message>
+    <message>
+        <source>Sivu ei saatavilla, yritä myöhemmin uudelleen.</source>
+        <translation>Page not available, try again later.</translation>
+    </message>
+    <message>
+        <source>Poista suosikki</source>
+        <translation>Remove favorite</translation>
+    </message>
+    <message>
+        <source>Ei suosikkeja</source>
+        <translation>No favorites</translation>
+    </message>
+    <message>
+        <source>Lähdettä ei ole asetettu</source>
+        <translation>Page source is not set</translation>
     </message>
 </context>
 <context>
@@ -108,6 +132,10 @@
     <message>
         <source>Oletustarkennuksen taso, jolla sivu näytetään oletuksena. Sivua voi myös tarkentaa nipistys-eleellä. Sivunkatselin avataan napauttamalla teksti-tv:n sivun kuvaa.</source>
         <translation>The default zoom level at which the page is displayed in the zoomed view. You can also zoom in on the page using a pinch gesture. To open the zoomed view, tap the image of the teletext page.</translation>
+    </message>
+    <message>
+        <source>tarkennus</source>
+        <translation>zoom</translation>
     </message>
 </context>
 <context>

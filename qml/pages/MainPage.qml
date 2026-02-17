@@ -122,7 +122,7 @@ Page {
             }
             MenuLabel {
                 id: currentTeletext
-                text: currentSource ? currentSource.name : "Source not set" //"YLE"
+                text: currentSource ? currentSource.name : qsTr("Lähdettä ei ole asetettu")
             }
         }
 
@@ -164,7 +164,7 @@ Page {
                         width: pageRectangle.width
                         wrapMode: Text.Wrap
                         color: Theme.highlightColor
-                        text: "Sivu ei saatavilla, yritä myöhemmin uudelleen."
+                        text: qsTr("Sivu ei saatavilla, yritä myöhemmin uudelleen.")
                         visible: parent.visible
                     }
                 }
@@ -214,7 +214,7 @@ Page {
                     menu: ContextMenu {
                         id: context
                         MenuItem {
-                            text: "Poista suosikki"
+                            text: qsTr("Poista suosikki")
                             onClicked: remove();
                         }
                     }
@@ -226,7 +226,7 @@ Page {
 
                 Label {
                     anchors.centerIn: parent
-                    text: "Ei suosikkeja"
+                    text: qsTr("Ei suosikkeja")
                     color: Theme.highlightColor
                     visible: favoritesList.count == 0
                 }

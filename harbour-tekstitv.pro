@@ -49,8 +49,7 @@ CONFIG += sailfishapp_i18n
 # planning to localize your app, remember to comment out the
 # following TRANSLATIONS line. And also do not forget to
 # modify the localized app name in the the .desktop file.
-TRANSLATIONS += translations/harbour-tekstitv-de.ts \
-    translations/harbour-tekstitv-en.ts \
+TRANSLATIONS += translations/harbour-tekstitv-en.ts \
     translations/harbour-tekstitv-it.ts
 
 HEADERS += \

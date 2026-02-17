@@ -7,7 +7,7 @@ Page {
     allowedOrientations: Orientation.All
 
     property string issuesText: qsTr("Löysitkö virheen? Onko sinulla hyviä kehitysideoita? Raportoi ne github:iin ja minä katson ne mielelläni läpi :)")
-    property string generalAboutText: qsTr("Tämä on helppokäyttöinen teksti-tv sovellus. Tällä hetkellä sovellus tukee YLE:n ja MTV:n teksti-tv:tä. Muita lähteitä saatan lisätä tulevaisuudessa (mikäli tiedot on helposti saatavilla). Sovellus on avointa lähdekoodia ja koodit löytyvät github:sta.")
+    property string generalAboutText: qsTr("Tämä on helppokäyttöinen teksti-tv sovellus. Tällä hetkellä sovellus tukee YLE:n ja Italian Televideo teksti-tv:tä. Muita lähteitä saatan lisätä tulevaisuudessa (mikäli tiedot on helposti saatavilla). Sovellus on avointa lähdekoodia ja koodit löytyvät github:sta.")
 
     Component.onCompleted: {
         issueLabel.text = Theme.highlightText(issuesText, "github", Theme.highlightColor)
@@ -87,6 +87,22 @@ Page {
                 MouseArea {
                     anchors.fill: parent
                     onClicked: Qt.openUrlExternally("https://github.com/pinniini/harbour-tekstitv")
+                }
+            }
+
+            SectionHeader {
+                text: qsTr("Kiitokset")
+            }
+
+            Label {
+                id: italianTranslationLabel
+                wrapMode: Text.Wrap
+                width: parent.width - Theme.paddingMedium
+                x: Theme.paddingMedium
+                text: qsTr("Italiankieliset käännökset: Francesco Gazzetta (fgaz)")
+                MouseArea {
+                    anchors.fill: parent
+                    onClicked: Qt.openUrlExternally("https://github.com/eson57")
                 }
             }
 

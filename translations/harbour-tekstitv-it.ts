@@ -36,12 +36,20 @@
         <translation>pinniini (Joni Korhonen)</translation>
     </message>
     <message>
-        <source>Tämä on helppokäyttöinen teksti-tv sovellus. Tällä hetkellä sovellus tukee YLE:n ja MTV:n teksti-tv:tä. Muita lähteitä saatan lisätä tulevaisuudessa (mikäli tiedot on helposti saatavilla). Sovellus on avointa lähdekoodia ja koodit löytyvät github:sta.</source>
-        <translation>Questa è un&apos;applicazione per il teletext semplice da usare. Al momento, l&apos;app supporta i teletext YLE e MTV finlandesi. Altre sorgenti potrebbero essere aggiunte in futuro (se le informazioni sono facilmente reperibili). L&apos;applicazione è open source e il codice può essere trovato su GitHub.</translation>
-    </message>
-    <message>
         <source>Versio </source>
         <translation>Versione </translation>
+    </message>
+    <message>
+        <source>Tämä on helppokäyttöinen teksti-tv sovellus. Tällä hetkellä sovellus tukee YLE:n ja Italian Televideo teksti-tv:tä. Muita lähteitä saatan lisätä tulevaisuudessa (mikäli tiedot on helposti saatavilla). Sovellus on avointa lähdekoodia ja koodit löytyvät github:sta.</source>
+        <translation>Questa è un&apos;applicazione per il teletext semplice da usare. Al momento, l&apos;app supporta i teletext YLE finlandesi. Altre sorgenti potrebbero essere aggiunte in futuro (se le informazioni sono facilmente reperibili). L&apos;applicazione è open source e il codice può essere trovato su GitHub.</translation>
+    </message>
+    <message>
+        <source>Kiitokset</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Italiankieliset käännökset: Francesco Gazzetta (fgaz)</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -73,6 +81,22 @@
     <message>
         <source>Asetukset</source>
         <translation>Impostazioni</translation>
+    </message>
+    <message>
+        <source>Sivu ei saatavilla, yritä myöhemmin uudelleen.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Poista suosikki</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ei suosikkeja</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Lähdettä ei ole asetettu</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -108,6 +132,10 @@
     <message>
         <source>Oletustarkennuksen taso, jolla sivu näytetään oletuksena. Sivua voi myös tarkentaa nipistys-eleellä. Sivunkatselin avataan napauttamalla teksti-tv:n sivun kuvaa.</source>
         <translation>Il livello di zoom predefinito al quale la pagina è visualizzata nella vista zoomata. Puoi anche zoomare allargando/avvicinando le dita. Per aprire la vista zoomata, tocca l&apos;immagine della pagina teletext.</translation>
+    </message>
+    <message>
+        <source>tarkennus</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

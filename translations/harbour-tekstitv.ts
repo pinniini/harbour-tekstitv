@@ -36,11 +36,19 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Tämä on helppokäyttöinen teksti-tv sovellus. Tällä hetkellä sovellus tukee YLE:n ja MTV:n teksti-tv:tä. Muita lähteitä saatan lisätä tulevaisuudessa (mikäli tiedot on helposti saatavilla). Sovellus on avointa lähdekoodia ja koodit löytyvät github:sta.</source>
+        <source>Versio </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Versio </source>
+        <source>Tämä on helppokäyttöinen teksti-tv sovellus. Tällä hetkellä sovellus tukee YLE:n ja Italian Televideo teksti-tv:tä. Muita lähteitä saatan lisätä tulevaisuudessa (mikäli tiedot on helposti saatavilla). Sovellus on avointa lähdekoodia ja koodit löytyvät github:sta.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Kiitokset</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Italiankieliset käännökset: Francesco Gazzetta (fgaz)</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -72,6 +80,22 @@
     </message>
     <message>
         <source>Asetukset</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Sivu ei saatavilla, yritä myöhemmin uudelleen.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Poista suosikki</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ei suosikkeja</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Lähdettä ei ole asetettu</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -107,6 +131,10 @@
     </message>
     <message>
         <source>Oletustarkennuksen taso, jolla sivu näytetään oletuksena. Sivua voi myös tarkentaa nipistys-eleellä. Sivunkatselin avataan napauttamalla teksti-tv:n sivun kuvaa.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>tarkennus</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

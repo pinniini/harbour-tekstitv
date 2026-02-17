@@ -97,7 +97,7 @@ Page {
                 maximumValue: 5
                 value: zoomLevel
                 stepSize: 0.5
-                valueText: value + " x tarkennus"
+                valueText: value + " x " + qsTr("tarkennus")
                 label: qsTr("Oletustarkennus")
 
                 onReleased: {
