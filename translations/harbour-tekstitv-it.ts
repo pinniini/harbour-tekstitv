@@ -45,11 +45,11 @@
     </message>
     <message>
         <source>Kiitokset</source>
-        <translation type="unfinished"></translation>
+        <translation>Riconoscimenti</translation>
     </message>
     <message>
         <source>Italiankieliset käännökset: Francesco Gazzetta (fgaz)</source>
-        <translation type="unfinished"></translation>
+        <translation>Traduzione in italiano: Francesco Gazzetta (fgaz)</translation>
     </message>
 </context>
 <context>
@@ -84,19 +84,19 @@
     </message>
     <message>
         <source>Sivu ei saatavilla, yritä myöhemmin uudelleen.</source>
-        <translation type="unfinished"></translation>
+        <translation>Pagina non disponibile, riprova più tardi.</translation>
     </message>
     <message>
         <source>Poista suosikki</source>
-        <translation type="unfinished"></translation>
+        <translation>Rimuovi dai preferiti</translation>
     </message>
     <message>
         <source>Ei suosikkeja</source>
-        <translation type="unfinished"></translation>
+        <translation>Nessun preferito</translation>
     </message>
     <message>
         <source>Lähdettä ei ole asetettu</source>
-        <translation type="unfinished"></translation>
+        <translation>Sorgente non impostata</translation>
     </message>
 </context>
 <context>
@@ -135,7 +135,7 @@
     </message>
     <message>
         <source>tarkennus</source>
-        <translation type="unfinished"></translation>
+        <translation>zoom</translation>
     </message>
 </context>
 <context>
