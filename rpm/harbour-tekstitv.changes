@@ -12,6 +12,11 @@
 # * date Author's Name <author's email> version-release
 # - Summary of changes
 
+* Thu Apr 16 2026 Joni Korhonen (pinniini) 1.4.0-1
+- v1.4.0
+- Add Italian Televideo source
+- Add resource strings and Italian translations
+
 * Tue Aug 5 2025 Joni Korhonen (pinniini) 1.3.2-1
 - v1.3.2
 - Adapt the UI for the top camera notch
