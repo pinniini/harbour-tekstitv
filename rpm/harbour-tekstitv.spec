@@ -34,6 +34,8 @@ Teletext app for Sailfish OS.
 # >> setup
 # << setup
 
+%define _binary_payload w2.xzdio
+
 %build
 # >> build pre
 # << build pre
